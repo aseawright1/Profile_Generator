@@ -1,35 +1,25 @@
-import { generateHTML } from './generateHTML'
-const generateHTML = generateHTML()
+// import { generateHTML } from './generateHTML'
+const generateHTML = require('./generateHTML.js');
+// let createHTML = generateHTML.generateHTML();
 
+// import utilities
 const inquirer = require("inquirer")
 const fs = require("fs")
 const util = require("util")
 
+// begin promise
 const writeFileAsync = util.promisify(fs.writeFile)
 
-const questions = [{
-    type: "input",
-    name: "username",
-    message: "What is your GitHub username?"
-}, {
-    type: "list",
-    name: "favorite-color",
-    message: "What is your favorite color?",
-    choices: ['red', 'pink', 'orange', 'yellow', 'green', 'blue', 'purple', 'black']
-}];
-
+// import questions into inquirer
 function promptUser() {
-    return inquirer.prompt(questions)
+    return inquirer.prompt(generateHTML.questions)
 }
 
-// function writeToFile(fileName, data) {
-
-// }
-
+// display prompts on console
 async function init() {
     console.log('Please answer the prompts below to generate your profile PDF')
     try {
-        const answers = await promptUser()
+        const data = await promptUser()
         const html = generateHTML(data)
         await writeFileAsync('index.html', html)
         console.log('Successfully wrote to index.html')
@@ -37,4 +27,5 @@ async function init() {
         console.log(err);
     }
 }
+
 init();

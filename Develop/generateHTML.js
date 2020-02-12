@@ -1,3 +1,14 @@
+const questions = [{
+    type: "input",
+    name: "username",
+    message: "What is your GitHub username?"
+}, {
+    type: "list",
+    name: "color",
+    message: "What is your favorite color?",
+    choices: ['red', 'pink', 'orange', 'yellow', 'green', 'blue', 'purple', 'black']
+}];
+
 const colors = {
     green: {
         wrapperBackground: "#E6E1C3",
@@ -25,7 +36,7 @@ const colors = {
     }
 };
 
-export function generateHTML(data) {
+function generateHTML(data) {
     return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -172,3 +183,7 @@ export function generateHTML(data) {
          }
       </style>`
 }
+
+module.exports = {
+    questions: questions,
+};
