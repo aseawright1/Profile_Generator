@@ -1,43 +1,4 @@
-const questions = [{
-    type: "input",
-    name: "username",
-    message: "What is your GitHub username?"
-}, {
-    type: "list",
-    name: "color",
-    message: "What is your favorite color?",
-    choices: ['red', 'pink', 'orange', 'yellow', 'green', 'blue', 'purple', 'black']
-}];
-
-const colors = {
-    green: {
-        wrapperBackground: "#E6E1C3",
-        headerBackground: "#C1C72C",
-        headerColor: "black",
-        photoBorderColor: "#black"
-    },
-    blue: {
-        wrapperBackground: "#5F64D3",
-        headerBackground: "#26175A",
-        headerColor: "white",
-        photoBorderColor: "#73448C"
-    },
-    pink: {
-        wrapperBackground: "#879CDF",
-        headerBackground: "#FF8374",
-        headerColor: "white",
-        photoBorderColor: "#FEE24C"
-    },
-    red: {
-        wrapperBackground: "#DE9967",
-        headerBackground: "#870603",
-        headerColor: "white",
-        photoBorderColor: "white"
-    }
-};
-
-function generateHTML(data) {
-    return `<!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     
     <head>
@@ -248,51 +209,45 @@ function generateHTML(data) {
     <body>
         <div class="wrapper">
             <div class="photo-header">
-                <img src="${data.avatar_url}"></img>
+                <img src="undefined"></img>
                 <h1>Hey there!</h1>
-                <h2>My name is ${data.name}.</h2>
-                <h6>I currently work at ${data.company}</h6>
+                <h2>My name is undefined.</h2>
+                <h6>I currently work at undefined</h6>
                 <div class="links-nav">
-                    <a href="http://maps.google.com/?q=${data.location}" class="nav-link"><i class="fas fa-location-arrow">
-                            ${data.location}</i></a>
-                    <a href="${data.html_url}" class="nav-link"><i class="fab fa-github-alt"> GitHub</i></a>
-                    <a href="${data.blog}" class="nav-link"><i class="fas fa-blog"> Portfolio</i></a>
+                    <a href="http://maps.google.com/?q=undefined" class="nav-link"><i class="fas fa-location-arrow">
+                            undefined</i></a>
+                    <a href="undefined" class="nav-link"><i class="fab fa-github-alt"> GitHub</i></a>
+                    <a href="undefined" class="nav-link"><i class="fas fa-blog"> Portfolio</i></a>
                 </div>
             </div>
             <main>
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <h3>${data.bio}</h3>
+                            <h3>undefined</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col card">
                             <h3>Public Repositories</h3>
-                            <h5>${data.public_repos}</h5>
+                            <h5>undefined</h5>
                         </div>
                         <div class="col card">
                             <h3>Followers</h3>
-                            <h5>${data.followers}</h5>
+                            <h5>undefined</h5>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col card">
                             <h3>GitHub Stars</h3>
-                            <h5>${data.public_gists}</h5>
+                            <h5>undefined</h5>
                         </div>
                         <div class="col card">
                             <h3>Following</h3>
-                            <h5>${data.following}</h5>
+                            <h5>undefined</h5>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
-    </body>`
-}
-
-module.exports = {
-    questions: questions,
-    generateHTML: generateHTML
-};
+    </body>

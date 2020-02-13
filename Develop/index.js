@@ -85,8 +85,6 @@ function init() {
                     createFile(htmlName, newFile);
                 }
             })
-
-
         }
     )
 }
