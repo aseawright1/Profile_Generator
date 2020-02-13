@@ -79,9 +79,8 @@ function init() {
                     dataParams.followers = response.data.followers
                     dataParams.stars = response.data.public_gists
                     dataParams.following = response.data.following
-
-                    // insert data into pdf creator
-                    const newFile = generateHTML.generateHTML(data);
+                        // insert data into pdf creator
+                    const newFile = generateHTML.generateHTML(dataParams);
                     createFile(htmlName, newFile);
                 }
             })
