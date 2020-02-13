@@ -29,13 +29,13 @@ const dataParams = {
 //     return inquirer.prompt(generateHTML.questions)
 // }
 
-function createFile(fileName, html) {
+function createFile(pdfName, html) {
     console.log('Please wait')
-    fs.writeFile('profile.pdf', html, (err) => {
+    fs.writeFile(pdfName, html, (err) => {
         if (err) throw err;
     })
 
-    // const options = { format: 'A4' }
+    const options = { format: 'A4' }
 
     generatePDF.create(html, options).toFile('./profile.pdf', function(err, res) {
         if (err) return console.log(err);
@@ -58,9 +58,10 @@ function createFile(fileName, html) {
 
 function init() {
     // ask the questions
-    inquirer.prompt(generateHTML.questionsquestions).then(
+    inquirer.prompt(generateHTML.questions).then(
         function(data) {
-            // link answers to HTML data
+            const htmlName = 'profile.html'
+                // link answers to HTML data
             dataParams.favcolor = data.color
             dataParams.profile = data.username
 
@@ -78,6 +79,10 @@ function init() {
                     dataParams.followers = response.data.followers
                     dataParams.stars = response.data.public_gists
                     dataParams.following = response.data.following
+
+                    // insert data into pdf creator
+                    const newFile = generateHTML.generateHTML(data);
+                    createFile(htmlName, newFile);
                 }
             })
 
@@ -85,5 +90,4 @@ function init() {
         }
     )
 }
-
 init();
