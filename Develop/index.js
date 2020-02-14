@@ -57,8 +57,8 @@ function createFile(pdfName, html) {
 function init() {
     // ask the questions
     inquirer.prompt(generateHTML.questions).then((data) => {
-        const htmlName = `${data.username}.html`
-            // link answers to HTML data
+        const htmlName = `${data.username}.html`;
+        // link answers to HTML data
         dataParams.favcolor = data.color
         dataParams.profile = data.username
 
@@ -87,7 +87,7 @@ function init() {
             createFile(htmlName, newFile);
         } catch (error) {
             console.log("error caught:", error.name, error.message)
-        } finally { console.log(typeof newFile) }
+        } finally { console.log(typeof htmlName) }
     })
 }
 init();
