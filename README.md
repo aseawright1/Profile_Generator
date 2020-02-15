@@ -1,5 +1,8 @@
 # Profile_Generator
 
+## Demo
+![alt text](https://github.com/aseawright1/7.Profile_Generator/blob/master/Assets/images/profile-gen-demo.gif)
+
 ## What this project is
 This is a command-line based application that dynamically generates a PDF resume from a GitHub username. The application is invoked with the following command:
 
