@@ -1,43 +1,4 @@
-const questions = [{
-    type: "input",
-    name: "username",
-    message: "What is your GitHub username?"
-}, {
-    type: "list",
-    name: "color",
-    message: "What is your favorite color?",
-    choices: ['red', 'pink', 'green', 'blue']
-}];
-
-const colors = {
-    green: {
-        wrapperBackground: "#E6E1C3",
-        headerBackground: "#C1C72C",
-        headerColor: "black",
-        photoBorderColor: "#black"
-    },
-    blue: {
-        wrapperBackground: "#5F64D3",
-        headerBackground: "#26175A",
-        headerColor: "white",
-        photoBorderColor: "#73448C"
-    },
-    pink: {
-        wrapperBackground: "#879CDF",
-        headerBackground: "#FF8374",
-        headerColor: "white",
-        photoBorderColor: "#FEE24C"
-    },
-    red: {
-        wrapperBackground: "#DE9967",
-        headerBackground: "#870603",
-        headerColor: "white",
-        photoBorderColor: "white"
-    }
-};
-
-function generateHTML(data) {
-    return `<!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="UTF-8" />
@@ -63,7 +24,7 @@ function generateHTML(data) {
       height: 100%;
     }
     .wrapper {
-      background-color: ${colors[data.favcolor].wrapperBackground};
+      background-color: #879CDF;
       padding-top: 100px;
     }
     body {
@@ -106,8 +67,8 @@ function generateHTML(data) {
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
-          background-color: ${colors[data.favcolor].headerBackground};
-          color: ${colors[data.favcolor].headerColor};
+          background-color: #FF8374;
+          color: white;
           padding: 10px;
           width: 95%;
           border-radius: 6px;
@@ -118,7 +79,7 @@ function generateHTML(data) {
           border-radius: 50%;
           object-fit: cover;
           margin-top: -75px;
-          border: 6px solid ${colors[data.favcolor].photoBorderColor};
+          border: 6px solid #FEE24C;
           box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
         }
         .photo-header h1, .photo-header h2 {
@@ -161,8 +122,8 @@ function generateHTML(data) {
         .card {
           padding: 20px;
           border-radius: 6px;
-          background-color: ${colors[data.favcolor].headerBackground};
-          color: ${colors[data.favcolor].headerColor};
+          background-color: #FF8374;
+          color: white;
            margin: 20px;
          }
          
@@ -188,50 +149,44 @@ function generateHTML(data) {
       <body>
     <div class="wrapper">
         <div class="photo-header">
-            <img src="${data.avi}"></img>
+            <img src="https://avatars1.githubusercontent.com/u/56727628?v=4"></img>
             <h1>Hey there!</h1>
-            <h2>My name is ${data.realName}.</h2>
-            <h6>I currently work at ${data.business}</h6>
+            <h2>My name is Alek Seawright.</h2>
+            <h6>I currently work at Honeywell</h6>
             <div class="links-nav">
-                <a href="http://maps.google.com/?q=${data.location}" class="nav-link"><i class="fas fa-location-arrow"> ${data.location}</i></a>
-                <a href="${data.profileLink}" class="nav-link"><i class="fab fa-github-alt"> GitHub</i></a>
-                <a href="${data.blog}" class="nav-link"><i class="fas fa-blog"> Portfolio</i></a>
+                <a href="http://maps.google.com/?q=Kansas City" class="nav-link"><i class="fas fa-location-arrow"> Kansas City</i></a>
+                <a href="https://github.com/aseawright1" class="nav-link"><i class="fab fa-github-alt"> GitHub</i></a>
+                <a href="https://aseawright1.github.io/6.Updated_Portfolio/" class="nav-link"><i class="fas fa-blog"> Portfolio</i></a>
             </div>
         </div>
         <main>
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h3>${data.bio}</h3>
+                        <h3>Electrical Engineer aiming to broaden my knowledge of the software development field. Learning something new every day!</h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col card">
                         <h3>Public Repositories</h3>
-                        <h5>${data.pubRepos}</h5>
+                        <h5>8</h5>
                     </div>
                     <div class="col card">
                         <h3>Followers</h3>
-                        <h5>${data.followers}</h5>
+                        <h5>1</h5>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col card">
                         <h3>GitHub Stars</h3>
-                        <h5>${data.stars}</h5>
+                        <h5>0</h5>
                     </div>
                     <div class="col card">
                         <h3>Following</h3>
-                        <h5>${data.following}</h5>
+                        <h5>1</h5>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-</body>`
-}
-
-module.exports = {
-    questions: questions,
-    generateHTML: generateHTML
-};
+</body>

@@ -22,37 +22,25 @@ const dataParams = {
     following: ''
 };
 
-// begin promise
-// const writeFileAsync = util.promisify(fs.writeFile)
-
-// import questions into inquirer
-// function promptUser() {
-//     return inquirer.prompt(generateHTML.questions)
-// }
-
 // function for creating the pdf file
 function createFile(pdfName, html) {
     console.log('Please wait')
-    fs.writeFile(pdfName, html)
+        // console.log(html)
+    console.log(pdfName)
+    fs.writeFile(pdfName, html, (err) => {
+        if (err) {
+            return console.log(err);
+        }
+    })
 
-    const options = { format: 'A3' }
+    // pdf generator formatting for A3 size paper
+    const options = { format: 'Letter' }
 
-    generatePDF.create(html, options).toFile(`./${dataParams.profile}.pdf`)
-    console.log('PDF generated');
+    generatePDF.create(html, options).toFile(`./${dataParams.profile}.pdf`, (err) => {
+        if (err) return console.log(err);
+        console.log('PDF Created!');
+    });
 }
-
-// display prompts on console
-// async function init() {
-//     console.log('Please answer the prompts below to generate your profile PDF')
-//     try {
-//         const data = await promptUser()
-//         const html = generateHTML.data
-//         await writeFileAsync('index.html', html)
-//         console.log('Successfully wrote to index.html')
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
 
 function init() {
     // ask the questions
@@ -63,10 +51,9 @@ function init() {
         dataParams.profile = data.username
 
         // pull data from github and link to my parameters
-
-
-        axios.get(`https://api.github.com/users/${data.username}`).then(function(response) {
-            if (response.status === 200) {
+        axios.get(`https://api.github.com/users/${data.username}`)
+            .then(function(response) {
+                // if (response.status === 200) {
                 dataParams.avi = response.data.avatar_url
                 dataParams.realName = response.data.name
                 dataParams.business = response.data.company
@@ -78,16 +65,18 @@ function init() {
                 dataParams.followers = response.data.followers
                 dataParams.stars = response.data.public_gists
                 dataParams.following = response.data.following
-                    // insert data into pdf creator
-                    // console.log(data.color)
-            }
-        })
-        try {
-            const newFile = generateHTML.generateHTML(dataParams);
-            createFile(htmlName, newFile);
-        } catch (error) {
-            console.log("error caught:", error.name, error.message)
-        } finally { console.log(typeof htmlName) }
+                console.log(data)
+
+                const newFile = generateHTML.generateHTML(dataParams);
+                createFile(htmlName, newFile);
+
+                // console.log("error caught:", error.name, error.message)
+                // }
+            })
+            .catch(err => {
+                console.log(err);
+                process.exit(1)
+            })
     })
 }
 init();
