@@ -25,8 +25,6 @@ const dataParams = {
 // function for creating the pdf file
 function createFile(pdfName, html) {
     console.log('Please wait')
-        // console.log(html)
-    console.log(pdfName)
     fs.writeFile(pdfName, html, (err) => {
         if (err) {
             return console.log(err);
@@ -34,7 +32,7 @@ function createFile(pdfName, html) {
     })
 
     // pdf generator formatting for A3 size paper
-    const options = { format: 'Letter' }
+    const options = { format: 'A3' }
 
     generatePDF.create(html, options).toFile(`./${dataParams.profile}.pdf`, (err) => {
         if (err) return console.log(err);
@@ -65,7 +63,6 @@ function init() {
                 dataParams.followers = response.data.followers
                 dataParams.stars = response.data.public_gists
                 dataParams.following = response.data.following
-                console.log(data)
 
                 const newFile = generateHTML.generateHTML(dataParams);
                 createFile(htmlName, newFile);
